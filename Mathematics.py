@@ -32,7 +32,7 @@ while True:
     q = raw_input("Would you like to solve math problems or play games %s ?: "% (name))
     if q == "math problems":
         while True:    
-            q2 = raw_input("So you want to solve math problems, which math problem you want to solve?(quadratic equations(qe) or hypotenuse(hy) or exit (exit) ): ")
+            q2 = raw_input("So you want to solve math problems, which math problem you want to solve?(quadric_equation(qe)-hypotenuse(hy)-average_calculator(ac)-exit (exit) ): ")
 
             if q2 == "qe":
                 print "Write variables"
@@ -58,7 +58,89 @@ while True:
                     continue;
                 if q3 == "no": 
                     break;
-            
+            if q2 == "ac": 
+                an = int (raw_input("How many different number averages do you want(2-7): ")) #an = average number 
+                if an == 2: 
+                    first_n = int (raw_input("First number: "))
+                    s_n = int (raw_input("Second number: "))
+                    average = (first_n + s_n)/2 
+                    print average 
+                    q3 = str(raw_input("Would you like to continue?: "))
+                    if q3 == "yes":
+                        continue;
+                    if q3 == "no": 
+                        break; 
+
+                if an == 3: 
+                    first_n = int (raw_input("First number: "))
+                    s_n = int (raw_input("Second number: ")) 
+                    t_n = int (raw_input("Third number: "))
+                    average = (first_n + s_n + t_n)/3
+                    print average 
+                    q3 = str(raw_input("Would you like to continue?: "))
+                    if q3 == "yes":
+                        continue;
+                    if q3 == "no": 
+                        break; 
+
+                if an == 4: 
+                    first_n = int (raw_input("First number: "))
+                    s_n = int (raw_input("Second number: ")) 
+                    t_n = int (raw_input("Third number: "))
+                    fo_n = int (raw_input("Fourth number: ")) 
+                    average = (first_n + s_n + t_n + fo_n)//4
+                    print average 
+                    q3 = str(raw_input("Would you like to continue?: "))
+                    if q3 == "yes":
+                        continue;
+                    if q3 == "no": 
+                        break; 
+
+                if an == 5:
+                    first_n = int (raw_input("First number: "))
+                    s_n = int (raw_input("Second number: ")) 
+                    t_n = int (raw_input("Third number: "))
+                    fo_n = int (raw_input("Fourth number: "))
+                    fi_n = int (raw_input("Fifth number: ")) 
+                    average = (first_n + s_n + t_n + fo_n + fi_n)/5
+                    print average 
+                    q3 = str(raw_input("Would you like to continue?: "))
+                    if q3 == "yes":
+                        continue;
+                    if q3 == "no": 
+                        break; 
+
+                if an == 6:
+                    first_n = int (raw_input("First number: "))
+                    s_n = int (raw_input("Second number: ")) 
+                    t_n = int (raw_input("Third number: "))
+                    fo_n = int (raw_input("Fourth number: "))
+                    fi_n = int (raw_input("Fifth number: "))
+                    si_n = int (raw_input("Sixth number: ")) 
+                    average = (first_n + s_n + t_n + fo_n + fi_n + si_n)/6
+                    print average 
+                    q3 = str(raw_input("Would you like to continue?: "))
+                    if q3 == "yes":
+                        continue;
+                    if q3 == "no": 
+                        break;
+
+
+                if an == 7: 
+                    first_n = int (raw_input("First number: "))
+                    s_n = int (raw_input("Second number: ")) 
+                    t_n = int (raw_input("Third number: "))
+                    fo_n = int (raw_input("Fourth number: "))
+                    fi_n = int (raw_input("Fifth number: "))
+                    si_n = int (raw_input("Sixth number: "))
+                    sev_n = int (raw_input("Seventh number: ")) 
+                    average = (first_n + s_n + t_n + fo_n + fi_n + si_n + sev_n)/7
+                    print average 
+                    q3 = str(raw_input("Would you like to continue?: "))
+                    if q3 == "yes":
+                        continue;
+                    if q3 == "no": 
+                        break;
             elif q2 == "exit":
                 break;
     elif q in ["play a game","play games"]:
