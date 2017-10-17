@@ -38,7 +38,7 @@ while True:
     q = raw_input("Would you like to solve math problems or play games %s ?: "% (name))
     if q == "math problems":
         while True:    
-            q2 = raw_input("So you want to solve math problems, which math problem you want to solve?(quadratic equations(qe) or hypotenuse(hy) or average(av) or exit (exit) ): ")
+            q2 = raw_input("So you want to solve math problems, which math problem you want to solve?(quadratic_equation(qe)-hypotenuse(hy)-average_calculator(av)-exit (exit) ): ")
 
             if q2 == "qe":
                 print "Write variables"
@@ -75,7 +75,6 @@ while True:
                     continue;
                 if q3 == "no": 
                     break;
-            
             elif q2 == "exit":
                 break;
     elif q in ["play a game","play games"]:
