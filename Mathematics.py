@@ -24,6 +24,12 @@ def hy(l, h):
         return "Can not be solved"
     else:
         return "The hyptoneuse's length is " + str((l ** 2 + h ** 2) ** 0.5)
+
+def av(array):
+    if len(array) > 0:
+        return "The average is: " + str(sum(array) / len(array))
+    else:
+        return "The list is empty" 
 #init
 print "Hi, I am solverman"
 name = raw_input("What is your name?: ")
@@ -32,7 +38,7 @@ while True:
     q = raw_input("Would you like to solve math problems or play games %s ?: "% (name))
     if q == "math problems":
         while True:    
-            q2 = raw_input("So you want to solve math problems, which math problem you want to solve?(quadratic equations(qe) or hypotenuse(hy) or exit (exit) ): ")
+            q2 = raw_input("So you want to solve math problems, which math problem you want to solve?(quadratic equations(qe) or hypotenuse(hy) or average(av) or exit (exit) ): ")
 
             if q2 == "qe":
                 print "Write variables"
@@ -51,6 +57,17 @@ while True:
                 l = float(raw_input("l: "))
                 h = float(raw_input("h: "))
                 print hy(l, h)
+                print "I hope I could help you."
+
+                q3 = str(raw_input("Would you like to continue?: "))
+                if q3 == "yes":
+                    continue;
+                if q3 == "no": 
+                    break;
+            elif q2 == "av":
+                array = raw_input("Type in the list of numbers seperated by commas (example: 1,2,3,4,5): ").split(",")
+                array = [float(i) for i in array]
+                print av(array)
                 print "I hope I could help you."
 
                 q3 = str(raw_input("Would you like to continue?: "))
