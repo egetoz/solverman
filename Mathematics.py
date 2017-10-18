@@ -1,7 +1,16 @@
+#imports
+from math import ceil
+import json
+
 # functions list
 mathfunctions = {
     "hy": "calculate hypotenuse given the two other sides of the triangle",
-    "qe": "solve quadratic equations (equations of the form ax^2 + bx + c)"
+    "qe": "solve quadratic equations (equations of the form ax^2 + bx + c)",
+    "av": "given numbers seperated by commas, calculate the average.",
+    "isprime": "is the number n prime?",
+    "listnprimes": "list n primes",
+    "listprimesuntil": "list all the primes until n",
+    "exit": "close the program"
 }
 mainfunctions = {
     "math problems": "solve various math problems",
@@ -30,58 +39,90 @@ def av(array):
         return "The average is: " + str(sum(array) / len(array))
     else:
         return "The list is empty" 
+#primes
+def isprime(n): #dependencies: math.ceil()
+    if n == 1:
+        return False
+    elif n % 2 == 0:
+        return False
+    for i in range(3, int(ceil(n ** 0.5)), 2):
+        if n % i == 0:
+            return False
+    return True
+
+def listnprimes(n): #dependencies: isprime()
+    list = [2]
+    cursor = 3
+    while len(list) < n:
+        if isprime(cursor):
+            list.append(cursor)
+        cursor += 2
+    return list
+
+def listprimeston(n): #dependencies: isprime()
+    list = [2]
+    cursor = 3
+    while cursor < n:
+        if isprime(cursor):
+            list.append(cursor)
+        cursor += 2
+    return list
+
 #init
-print "Hi, I am solverman"
+print "\n\nHi, I am solverman \n\n"
 name = raw_input("What is your name?: ")
 
 while True:
     q = raw_input("Would you like to solve math problems or play games %s ?: "% (name))
     if q == "math problems":
-        while True:    
-            q2 = raw_input("So you want to solve math problems, which math problem you want to solve?(quadratic_equation(qe)-hypotenuse(hy)-average_calculator(av)-exit (exit) ): ")
+        while True:
+            print "\n\n Write 'help' to get a list of commands and 'exit' to exit \n\n"    
+            q2 = raw_input("Which math problem do you want to solve?: ")
 
-            if q2 == "qe":
+            if q2 == "help":
+                print json.dumps(mathfunctions, indent=4)
+            elif q2 == "qe":
                 print "Write variables"
                 a = float(raw_input("a: ")) 
                 b = float(raw_input("b: "))
                 c = float(raw_input("c: "))
                 print qe(a, b, c)
-                print "I hope I could help you."
-
-                q3 = str(raw_input("Would you like to continue?: "))
-                if q3 == "yes":
-                    continue;
-                if q3 == "no": 
-                    break;
             elif q2 == "hy":
                 l = float(raw_input("l: "))
                 h = float(raw_input("h: "))
                 print hy(l, h)
-                print "I hope I could help you."
-
-                q3 = str(raw_input("Would you like to continue?: "))
-                if q3 == "yes":
-                    continue;
-                if q3 == "no": 
-                    break;
             elif q2 == "av":
                 array = raw_input("Type in the list of numbers seperated by commas (example: 1,2,3,4,5): ").split(",")
                 array = [float(i) for i in array]
                 print av(array)
-                print "I hope I could help you."
-
-                q3 = str(raw_input("Would you like to continue?: "))
-                if q3 == "yes":
-                    continue;
-                if q3 == "no": 
-                    break;
+                
+            elif q2 == "isprime":
+                n = int(raw_input("Type in a number to find out if it's prime: "))
+                if isprime(n):
+                    print str(n) + " is prime!"
+                else:
+                    print str(n) + " isn't prime!"
+            elif q2 == "listnprimes":
+                n = int(raw_input("How many primes do you want to list? "))
+                print listnprimes(n)
+            elif q2 == "listprimesuntil":
+                n = int(raw_input("List all the primes until number: "))
+                print listprimesuntil(n)
             elif q2 == "exit":
+                print "Bye!"
+                exit()
+
+            print "I hope I could help you."
+            q3 = str(raw_input("Would you like to continue?: "))
+            if q3 == "yes":
+                continue;
+            elif q3 == "no": 
                 break;
     elif q in ["play a game","play games"]:
         print "Alright do you want to play a game"
     elif q in ["exit","quit","exit()"]:
         print "Bye!"
-        break
+        exit()
     else:
         print "not a valid command (type 'exit' to exit)"
             
