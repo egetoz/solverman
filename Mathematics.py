@@ -75,14 +75,14 @@ def ismath(str):
             return False
     return True
 #init
-print "\n\nHi, I am solverman \n\n"
+print "Hi, I am solverman"
 name = raw_input("What is your name?: ")
 
 while True:
     q = raw_input("Would you like to solve math problems or play games %s ?: "% (name))
     if q == "math problems":
         while True:
-            print "\n\n Write 'help' to get a list of commands and 'exit' to exit \n\n"    
+            print "Write 'help' to get a list of commands and 'exit' to exit"    
             q2 = raw_input("Which math problem do you want to solve? (type 'help' to see a list of commands): ")
 
             if q2 == "help":
