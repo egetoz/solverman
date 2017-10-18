@@ -1,6 +1,7 @@
 #imports
 from math import ceil
 import json
+import __future__
 
 # functions list
 mathfunctions = {
@@ -68,12 +69,15 @@ def listprimeston(n): #dependencies: isprime()
             list.append(cursor)
         cursor += 2
     return list
-def ismath(str):
+def ismath(string):
     array = ["0","1","2","3","4","5","6","7","8","9","(",")","*","/","-","+"]
-    for i in str:
+    for i in [i for i in string if i != " "]:
         if i not in array:
             return False
-    return True
+    if len([i for i in string if i != " "]) != 0:
+        return True
+    else:
+        return False
 #init
 print "Hi, I am solverman"
 name = raw_input("What is your name?: ")
@@ -119,7 +123,7 @@ while True:
                 exit()
             else:
                 if ismath(q2):
-                    print "Your answer is " + str(eval(q2))
+                    print "Your answer is " + str(eval(compile("".join([i for i in q2 if i != " "]), '<string>', 'eval', __future__.division.compiler_flag)))
                 else:
                     print "Not a valid command. Type 'help' to see a list of commands"
 
@@ -130,7 +134,8 @@ while True:
             elif q3 == "no": 
                 break;
     elif q in ["play a game","play games"]:
-        print "Alright do you want to play a game"
+        print "Not available right now"
+        continue
     elif q in ["exit","quit","exit()"]:
         print "Bye!"
         exit()
