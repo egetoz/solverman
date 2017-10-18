@@ -10,7 +10,8 @@ mathfunctions = {
     "isprime": "is the number n prime?",
     "listnprimes": "list n primes",
     "listprimesuntil": "list all the primes until n",
-    "exit": "close the program"
+    "exit": "close the program",
+    "any mathematical expression": "if you type in a mathematical expression that is not on of the commands listed, the program will automatically solve it for you (example: 12+123*1234)"
 }
 mainfunctions = {
     "math problems": "solve various math problems",
@@ -67,7 +68,12 @@ def listprimeston(n): #dependencies: isprime()
             list.append(cursor)
         cursor += 2
     return list
-
+def ismath(str):
+    array = ["0","1","2","3","4","5","6","7","8","9","(",")","*","/","-","+"]
+    for i in str:
+        if i not in array:
+            return False
+    return True
 #init
 print "\n\nHi, I am solverman \n\n"
 name = raw_input("What is your name?: ")
@@ -77,7 +83,7 @@ while True:
     if q == "math problems":
         while True:
             print "\n\n Write 'help' to get a list of commands and 'exit' to exit \n\n"    
-            q2 = raw_input("Which math problem do you want to solve?: ")
+            q2 = raw_input("Which math problem do you want to solve? (type 'help' to see a list of commands): ")
 
             if q2 == "help":
                 print json.dumps(mathfunctions, indent=4)
@@ -111,6 +117,11 @@ while True:
             elif q2 == "exit":
                 print "Bye!"
                 exit()
+            else:
+                if ismath(q2):
+                    print "Your answer is " + str(eval(q2))
+                else:
+                    print "Not a valid command. Type 'help' to see a list of commands"
 
             print "I hope I could help you."
             q3 = str(raw_input("Would you like to continue?: "))
