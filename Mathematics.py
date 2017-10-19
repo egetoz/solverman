@@ -1,6 +1,8 @@
 #imports
 from math import ceil
+import random
 import json
+import urllib
 import __future__
 
 # functions list
@@ -128,14 +130,89 @@ while True:
                     print "Not a valid command. Type 'help' to see a list of commands"
 
             print "I hope I could help you."
-            q3 = str(raw_input("Would you like to continue?: "))
-            if q3 == "yes":
-                continue;
-            elif q3 == "no": 
-                break;
     elif q in ["play a game","play games"]:
-        print "Not available right now"
-        continue
+        quizinput = raw_input("Here's a quiz game for you. There are 85 questions that will be randomly given to you, they are categorized easy, medium and hard. Easy questions gain 1 points, medium 2 points and hard 3 points. Type in anything to begin, 'exit' to exit and 'back' to go back.: ")
+        if quizinput == "back":
+            continue
+        elif quizinput == "exit":
+            print "Bye!"
+            exit()
+        else:
+            trivia = open("trivia.json", "r")
+            data = json.loads(trivia.read())["results"]
+            random.shuffle(data)
+            trivia.close()
+            score = 0
+            for i in range(len(data)):
+                print "Question number " + str(i + 1) + ":"
+                print data[i]["question"]
+                choices = [data[i]["correct_answer"]] + data[i]["incorrect_answers"]
+                random.shuffle(choices)
+                print "A) " + choices[0]
+                print "B) " + choices[1]
+                print "C) " + choices[2]
+                print "D) " + choices[3]
+                while True:
+                    quizanswer = raw_input("Which one do you choose? A, B, C or D?: ")
+                    if quizanswer in "Aa":
+                        if choices[0] == data[i]["correct_answer"]:
+                            if data[i]["difficulty"] == "easy":
+                                score += 1
+                            elif data[i]["difficulty"] == "medium":
+                                score += 2
+                            elif data[i]["difficulty"] == "hard":
+                                score += 3
+                            print "You are absolutely correct! Your new score is " + str(score)
+                            break
+                        else:
+                            print "You are WRONG! Your score is still " + str(score)
+                            break
+                    elif quizanswer in "Bb":
+                        if choices[1] == data[i]["correct_answer"]:
+                            if data[i]["difficulty"] == "easy":
+                                score += 1
+                            elif data[i]["difficulty"] == "medium":
+                                score += 2
+                            elif data[i]["difficulty"] == "hard":
+                                score += 3
+                            print "You are absolutely correct! Your new score is " + str(score)
+                            break
+                        else:
+                            print "You are WRONG! Your score is still " + str(score)
+                            break
+                    elif quizanswer in "Cc":
+                        if choices[2] == data[i]["correct_answer"]:
+                            if data[i]["difficulty"] == "easy":
+                                score += 1
+                            elif data[i]["difficulty"] == "medium":
+                                score += 2
+                            elif data[i]["difficulty"] == "hard":
+                                score += 3
+                            print "You are absolutely correct! Your new score is " + str(score)
+                            break
+                        else:
+                            print "You are WRONG! Your score is still " + str(score)
+                            break
+                    elif quizanswer in "Dd":
+                        if choices[3] == data[i]["correct_answer"]:
+                            if data[i]["difficulty"] == "easy":
+                                score += 1
+                            elif data[i]["difficulty"] == "medium":
+                                score += 2
+                            elif data[i]["difficulty"] == "hard":
+                                score += 3
+                            print "You are absolutely correct! Your new score is " + str(score)
+                            break
+                        else:
+                            print "You are WRONG! Your score is still " + str(score)
+                            break
+                    else:
+                        print "Not a valid answer, type only A, B, C or D."
+                contprompt = raw_input("Wanna continue?: ")
+                if contprompt == "no":
+                    break
+            print "End of trivia! You scored " + str(score)
+
     elif q in ["exit","quit","exit()"]:
         print "Bye!"
         exit()
