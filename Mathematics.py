@@ -18,9 +18,9 @@ mathfunctions = {
         "any mathematical expression": "if you type in a mathematical expression that is not on of the commands listed, the program will automatically solve it for you (example: 12+123*1234)"
     },
     "Science": {
-        "pmvp": "find density from the formula p = m / V",
-        "pmvm": "find mass from the formula p = m / V",
-        "pmvv": "find volume from the formula p = m / V"
+        "p": "find density from the formula p = m / V",
+        "m": "find mass from the formula p = m / V",
+        "V": "find volume from the formula p = m / V"
     },
     "Other": {
         "exit": "close the program"
@@ -67,7 +67,13 @@ def m(p, V):
 def p(m, V):
     return "The density is: " + str(m / V)
 def V(p, m):
-    return "The volume is: " + str(m / p)
+    return "The volume is: " + str(m / p) 
+def W(F, d):
+    return "The Work is: " + str(F * d)
+def F(W, d):
+    return "The Force is: " + str(W / d)
+def d(W, F):
+    return "The Distance is: " + str(W / F)
 #primes
 def isprime(n): #dependencies: math.ceil()
     if n == 1:
@@ -137,28 +143,48 @@ while True:
             elif q2 == "listprimesuntil":
                 n = int(raw_input("List all the primes until number: "))
                 print listprimesuntil(n)
-            elif q2 == "pmvp":
+            elif q2 == "p":
                 m = float(raw_input("Enter mass: "))
                 V = float(raw_input("Enter volume: "))
                 if m != 0 and V != 0:
-                    print p(m, V)
+                    print pmvp(m, V)
                 else:
                     print "The variables can not be 0"
-            elif q2 == "pmvm":
+            elif q2 == "m":
                 p = float(raw_input("Enter density: "))
                 V = float(raw_input("Enter volume: "))
                 if p != 0 and V != 0:
                     print m(p, V)
                 else:
                     print "The variables can not be 0"
-            elif q2 == "pmvv":
+            elif q2 == "V":
                 m = float(raw_input("Enter mass: "))
                 p = float(raw_input("Enter density: "))
                 if m != 0 and p != 0:
                     print V(p, m)
                 else:
+                    print "The variables can not be 0" 
+            elif q2 == "W":
+                F = float(raw_input("Enter Force: "))
+                d = float(raw_input("Enter Distance: ")) 
+                if F != 0 and d != 0:
+                    print W(F, d)
+                else:
                     print "The variables can not be 0"
-
+            elif q2 == "F":
+                W = float(raw_input("Enter Work: "))
+                d = float(raw_input("Enter Distance: "))
+                if W != 0 and d != 0:
+                    print F(W, d)
+                else:
+                    print "The variables can not be 0"
+            elif q2 == "d":
+                W = float(raw_input("Enter Work: "))
+                F = float(raw_input("Enter Force: "))
+                if W != 0 and F != 0:
+                    print d(W, F)
+                else:
+                    print "The variables can not be 0"
             elif q2 == "exit":
                 print "Bye!"
                 exit()
