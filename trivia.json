@@ -671,13 +671,5 @@
         "question": "What did the abbreviation 'RMS&' stand for in the RMS Titanic in 1912?",
         "correct_answer": "Royal Mail Ship",
         "incorrect_answers": ["Royal Majesty Service", "Regular Maritime Schedule ", "Regulated Maelstrom Sensor"]
-    },
-    {
-        "category": "History",
-        "type": "multiple",
-        "difficulty": "medium",
-        "question": "What is the name of the ship which was only a few miles away from the RMS Titanic when it struck an iceberg on April 14, 1912?",
-        "correct_answer": "Californian",
-        "incorrect_answers": ["Carpathia", "Cristol", "Commerce"]
     }]
 }
