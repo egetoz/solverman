@@ -62,17 +62,17 @@ def ismath(string):
         return True
     else:
         return False
-def m(p, V):
+def Mass(p, V):
     return "The mass is: " + str(p * V)
-def p(m, V):
+def Density(m, V):
     return "The density is: " + str(m / V)
-def V(p, m):
+def Volume(p, m):
     return "The volume is: " + str(m / p) 
-def W(F, d):
+def Work(F, d):
     return "The Work is: " + str(F * d)
-def F(W, d):
+def Force(W, d):
     return "The Force is: " + str(W / d)
-def d(W, F):
+def Distance(W, F):
     return "The Distance is: " + str(W / F)
 #primes
 def isprime(n): #dependencies: math.ceil()
@@ -143,46 +143,46 @@ while True:
             elif q2 == "listprimesuntil":
                 n = int(raw_input("List all the primes until number: "))
                 print listprimesuntil(n)
-            elif q2 == "p":
+            elif q2 == "Density":
                 m = float(raw_input("Enter mass: "))
                 V = float(raw_input("Enter volume: "))
                 if m != 0 and V != 0:
-                    print pmvp(m, V)
+                    print Density(m, V)
                 else:
                     print "The variables can not be 0"
-            elif q2 == "m":
+            elif q2 == "Mass":
                 p = float(raw_input("Enter density: "))
                 V = float(raw_input("Enter volume: "))
                 if p != 0 and V != 0:
-                    print m(p, V)
+                    print Mass(p, V)
                 else:
                     print "The variables can not be 0"
-            elif q2 == "V":
+            elif q2 == "Volume":
                 m = float(raw_input("Enter mass: "))
                 p = float(raw_input("Enter density: "))
                 if m != 0 and p != 0:
-                    print V(p, m)
+                    print Volume(p, m)
                 else:
                     print "The variables can not be 0" 
-            elif q2 == "W":
+            elif q2 == "Work":
                 F = float(raw_input("Enter Force: "))
                 d = float(raw_input("Enter Distance: ")) 
                 if F != 0 and d != 0:
-                    print W(F, d)
+                    print Work(F, d)
                 else:
                     print "The variables can not be 0"
-            elif q2 == "F":
+            elif q2 == "Force":
                 W = float(raw_input("Enter Work: "))
                 d = float(raw_input("Enter Distance: "))
                 if W != 0 and d != 0:
-                    print F(W, d)
+                    print Force(W, d)
                 else:
                     print "The variables can not be 0"
-            elif q2 == "d":
+            elif q2 == "Distance":
                 W = float(raw_input("Enter Work: "))
                 F = float(raw_input("Enter Force: "))
                 if W != 0 and F != 0:
-                    print d(W, F)
+                    print Distance(W, F)
                 else:
                     print "The variables can not be 0"
             elif q2 == "exit":
