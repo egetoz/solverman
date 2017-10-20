@@ -7,14 +7,23 @@ import __future__
 
 # functions list
 mathfunctions = {
-    "hy": "calculate hypotenuse given the two other sides of the triangle",
-    "qe": "solve quadratic equations (equations of the form ax^2 + bx + c)",
-    "av": "given numbers seperated by commas, calculate the average.",
-    "isprime": "is the number n prime?",
-    "listnprimes": "list n primes",
-    "listprimesuntil": "list all the primes until n",
-    "exit": "close the program",
-    "any mathematical expression": "if you type in a mathematical expression that is not on of the commands listed, the program will automatically solve it for you (example: 12+123*1234)"
+    "Mathematics":{
+        "hy": "calculate hypotenuse given the two other sides of the triangle",
+        "qe": "solve quadratic equations (equations of the form ax^2 + bx + c)",
+        "av": "given numbers seperated by commas, calculate the average.",
+        "isprime": "is the number n prime?",
+        "listnprimes": "list n primes",
+        "listprimesuntil": "list all the primes until n",
+        "any mathematical expression": "if you type in a mathematical expression that is not on of the commands listed, the program will automatically solve it for you (example: 12+123*1234)"
+    },
+    "Science": {
+        "pmvp": "find density from the formula p = m / V",
+        "pmvm": "find mass from the formula p = m / V",
+        "pmvv": "find volume from the formula p = m / V"
+    },
+    "Other": {
+        "exit": "close the program"
+    }
 }
 mainfunctions = {
     "math problems": "solve various math problems",
@@ -43,6 +52,21 @@ def av(array):
         return "The average is: " + str(sum(array) / len(array))
     else:
         return "The list is empty" 
+def ismath(string):
+    array = ["0","1","2","3","4","5","6","7","8","9","(",")","*","/","-","+"]
+    for i in [i for i in string if i != " "]:
+        if i not in array:
+            return False
+    if len([i for i in string if i != " "]) != 0:
+        return True
+    else:
+        return False
+def m(p, V):
+    return "The mass is: " + str(p * V)
+def p(m, V):
+    return "The density is: " + str(m / V)
+def V(p, m):
+    return "The volume is: " + str(m / p)
 #primes
 def isprime(n): #dependencies: math.ceil()
     if n == 1:
@@ -71,15 +95,7 @@ def listprimeston(n): #dependencies: isprime()
             list.append(cursor)
         cursor += 2
     return list
-def ismath(string):
-    array = ["0","1","2","3","4","5","6","7","8","9","(",")","*","/","-","+"]
-    for i in [i for i in string if i != " "]:
-        if i not in array:
-            return False
-    if len([i for i in string if i != " "]) != 0:
-        return True
-    else:
-        return False
+
 #init
 print "Hi, I am solverman"
 name = raw_input("What is your name?: ")
@@ -120,6 +136,28 @@ while True:
             elif q2 == "listprimesuntil":
                 n = int(raw_input("List all the primes until number: "))
                 print listprimesuntil(n)
+            elif q2 == "pmvp":
+                m = float(raw_input("Enter mass: "))
+                V = float(raw_input("Enter volume: "))
+                if m != 0 and V != 0:
+                    print p(m, V)
+                else:
+                    print "The variables can not be 0"
+            elif q2 == "pmvm":
+                p = float(raw_input("Enter density: "))
+                V = float(raw_input("Enter volume: "))
+                if p != 0 and V != 0:
+                    print m(p, V)
+                else:
+                    print "The variables can not be 0"
+            elif q2 == "pmvv":
+                m = float(raw_input("Enter mass: "))
+                p = float(raw_input("Enter density: "))
+                if m != 0 and p != 0:
+                    print V(p, m)
+                else:
+                    print "The variables can not be 0"
+
             elif q2 == "exit":
                 print "Bye!"
                 exit()
