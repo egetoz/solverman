@@ -5,6 +5,7 @@ import json
 import urllib
 import __future__
 import os
+import datetime
 
 # functions list
 mathfunctions = {
@@ -108,7 +109,7 @@ print "Hi, I am solverman"
 name = raw_input("What is your name?: ")
 
 while True:
-    q = raw_input("Would you like to solve math problems or play games %s ?: "% (name))
+    q = raw_input("Would you like to solve math problems or play games OR our new feature youtube citation? %s ?: "% (name))
     if q == "math problems":
         while True:
             print "Write 'help' to get a list of commands and 'exit' to exit"    
@@ -280,6 +281,42 @@ while True:
                     break
             print "End of trivia! You scored " + str(score)
 
+    elif q == "youtube citation":
+        while True:
+            citevideo = raw_input("Enter video id: ")
+            citeurl = "https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=" + citevideo + "&key=AIzaSyA8bDxbFTEsuAt3gu5eVnzQcxsFGPFF_qQ"
+            url = urllib.urlopen(citeurl)
+            data = json.loads(url.read())
+            datatitle = data["items"][0]["snippet"]["title"]
+            datadate = data["items"][0]["snippet"]["publishedAt"][:10].split("-")
+            dataurl = "https://www.youtube.com/watch?v=" + citevideo
+            datachannel = data["items"][0]["snippet"]["channelTitle"]
+            months = {
+                "01":"January",
+                "02":"February",
+                "03":"March",
+                "04":"April",
+                "05":"May",
+                "06":"June",
+                "07":"July",
+                "08":"August",
+                "09":"September",
+                "10":"October",
+                "11":"November",
+                "12":"December"
+            }
+            datadate[1] = datadate[1].replace(datadate[1], months[datadate[1]])
+            datadate = " ".join(datadate[::-1])
+            now = datetime.datetime.now()
+            now = now.strftime("%d-%m-%Y").split("-")
+            now[1] = now[1].replace(now[1], months[now[1]])
+            now = " ".join(now)
+            print '"' + datatitle + '" Youtube, ' + datachannel + ', ' + datadate + ', ' + dataurl + ' Accessed ' + now
+            citecont = raw_input("Wanna continue?: ")
+            if citecont == "yes":
+                continue
+            else:
+                break
     elif q in ["exit","quit","exit()"]:
         print "Bye!"
         exit()
