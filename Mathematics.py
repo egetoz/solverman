@@ -4,6 +4,7 @@ import random
 import json
 import urllib
 import __future__
+import os
 
 # functions list
 mathfunctions = {
@@ -176,7 +177,9 @@ while True:
             print "Bye!"
             exit()
         else:
-            trivia = open("trivia.json", "r")
+            thisfolder = os.path.dirname(os.path.abspath(__file__))
+            myfile = os.path.join(thisfolder, 'trivia.json')
+            trivia = open(myfile, "r")
             data = json.loads(trivia.read())["results"]
             random.shuffle(data)
             trivia.close()
