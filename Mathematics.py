@@ -35,14 +35,19 @@ mainfunctions = {
 
 #functions
 def qe(a, b, c):
-    if a != 0 and b != 0 and c != 0:
-        if (b ** 2 - 4 * a  *c) < 0:
-            return "Can not be solved!"
+    determinant = b ** 2 - 4 * a * c
+    if determinant > 0:
         x1 = (-b + (b ** 2 - 4 *a *c) ** 0.5 ) / (2 * a)
         x2 = (-b - (b ** 2 - 4*a*c) ** 0.5)  / (2 * a)
-        return "The two answers are: " + str(x1) + " and " + str(x2)
+    elif determinant == 0:
+        x1, x2 = -b / (2 * a)
+    elif determinant < 0:
+        x1 = (-b / 2 * a) + sqrt(-determinant / (2 * a))
+        x1 = (-b / 2 * a) - sqrt(-determinant / (2 * a))
     else:
-        return "a, b and c must be different than 0"
+        return "Can not be solved"
+    
+    return "The two answers are: " + str(x1) + " and " + str(x2)
 def hy(l, h):
     if l <= 0 or h <= 0:
         return "Can not be solved"
